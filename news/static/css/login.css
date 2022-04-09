@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+ 
+ body{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+     /* background-image: url(https://res.cloudinary.com/dvklutj2x/image/upload/fl_progressive,q_auto,dpr_auto,f_auto/v1578482514/pvolem9hlvwtapjwkbbb.jpg); */
+     background-image:url(https://images.unsplash.com/photo-1432847712612-926caafaa802?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80) ;
+     /* background-image:url(https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) ; */
+     /* background-image: url(https://wallpaperaccess.com/full/2916985.jpg); */
+     /* background-image: url(https://wallpaperaccess.com/full/2916972.jpg); */
+     /* background-image: url(https://wallpaperaccess.com/full/3369781.jpg); */
+     /* background-image: url(https://wallpaperaccess.com/full/198038.jpg);
+     background-image: url(https://www.designyourway.net/blog/wp-content/uploads/2020/05/paper9.jpg);
+     background-image: url(https://img.freepik.com/free-photo/vintage-letter-old-grunge-paper-texture-with-ink-pen-concept-romantic-handwriting-greeting-card-postcards-retro-background-photo_526934-3617.jpg?size=626&ext=jpg); */
+     background-position: center;
+     background-repeat:no-repeat;
+     background-size: cover;
+     color: #fff;
+ }
+ 
+ body::before{
+     content: '';
+     width: 100%;
+     height: 100vh;
+     position: absolute;
+     background: rgba(0, 0, 0, 0.5);
+     z-index: -1;
+ }
+ 
+ .container{
+     width: 335px;
+     height: 450px;
+     background: rgba(255, 255, 255, 0.1);
+     border-top: 1px solid rgba(255, 255, 255, 0.5);
+     border-left: 1px solid #ffffff80;
+     border-radius: 10px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     -webkit-backdrop-filter:  blur(8px);
+ }
+ 
+ input::placeholder{
+     color: rgb(255, 255, 255);
+     text-align: left;
+     padding-left: 10px;
+     font-size: 15px;
+     letter-spacing: 1px;
+ }
+ form{
+     width: 275px;
+     margin: 0 auto;
+ }
+ 
+ form input{
+     margin: 15px 0;
+     width: 100%;
+     height: 40px;
+     background: rgba(255, 255, 255, 0.1);
+     border-top: 1px solid rgba(255, 255, 255, 0.1);
+     border-left: 1px solid #ffffff80;
+     border-radius: 15px;
+     border-right: none;
+     border-bottom: none;
+     text-align: center;
+     color: rgb(255, 255, 255);
+ 
+ }
+ 
+ label{
+     display: block;
+     font-weight: 700;
+     font-size: 16px;
+     color: rgb(245, 241, 241);
+     letter-spacing: 2px;
+ }
+ 
+ form h1{
+     text-align: center;
+     color: #fff;
+     font-size: 33px;
+ }
+ 
+ form h5{
+     text-align: center;
+     font-size: 15px;
+     margin: 10px 0 20px 0;
+     font-weight: 600;
+     letter-spacing: 1px;
+ }
+ 
+ form button{
+     width: 100%;
+     height: 44px;
+     background: rgba(255, 255, 255, 0.1);
+     border: none;
+     border-radius: 50px;
+     color: rgb(31, 30, 30);
+     margin: 22px 0;
+     font-size: 19px;
+     font-weight: 800;
+     
+ }
+ .form button:hover {
+     background-color: #e6a901; /* Green */
+     color: rgb(22, 21, 22);
+     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+   }
+ 
+   .form button:active {
+     background-color: #e6a901;
+     box-shadow: 0 5px rgb(29, 28, 28);
+     transform: translateY(4px);
+   }
+ 
+ 
+   regis button{
+     width: 100%;
+     height: 44px;
+     background: rgba(255, 255, 255, 0.1);
+     border: none;
+     border-radius: 50px;
+     color: rgb(31, 30, 30);
+     margin: 22px 0;
+     font-size: 19px;
+     font-weight: 800;
+     
+ }
+ .regis button:hover {
+     background-color: #e6a901; /* Green */
+     color: rgb(22, 21, 22);
+     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+   }
+ 
+   .regis button:active {
+     background-color: #e6a901;
+     box-shadow: 0 5px rgb(29, 28, 28);
+     transform: translateY(4px);
+   }
+   
