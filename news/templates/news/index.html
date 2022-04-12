@@ -55,7 +55,7 @@
     </head>
     <body>
     <div class="background">
-    <div class="nav" id="on-top" style="display:grid;grid-template-columns:18% 20% auto;padding-top:20px;column-gap:130px;">
+    <div class="nav" id="on-top" style="display:grid;grid-template-columns:18% 70% auto;padding-top:20px;column-gap:3px;">
     <h2>
          {% if request.user.is_authenticated %}
                 <p id="top" style = "background-color:yellow;">Hello {{request.user}}!</p>
@@ -66,7 +66,7 @@
         <![endif]-->
 
 <div style="align-items:center">
-<form class="form-signin"  method="GET" style="margin-left:50px" >
+<form class="form-signin"  method="GET" style="padding-left: 196px;" >
 
 <label for="state"></label>
 <select id="state" name="state-name">
@@ -98,7 +98,7 @@
        <p><button class="btn-btn-outline-secondary" style="margin-left:180px" type="submit" >SEARCH</button></p>
 </div>
 
-  <a href="http://127.0.0.1:8000/"><button style="size:20px; margin-top:5px;margin-left:380px"> LOGOUT </button></a>    
+<button  onclick="location.href='http://127.0.0.1:8000/'" type="button" style="size:20px; margin-top:5px; height:53px;"> LOGOUT </button>   
 
 </div>
       

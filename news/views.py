@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-# import lxml
+import lxml
 from bs4 import BeautifulSoup
 import requests
 from .forms import CustomUserCreationForm
@@ -60,19 +60,41 @@ def registerUser(request):
 
 @login_required(login_url='login')
 def homePage(request):
-        r=requests.get("https://www.jagran.com/news/national-news-hindi.html?itm_medium=national&itm_source=dsktp&itm_campaign=navigation")
+        r=requests.get("https://indianexpress.com/section/india/")
         soup=BeautifulSoup(r.content,'lxml')
-        heading=soup.find_all('div',{'class':'h3'})
+        heading=soup.find_all('h2',{'class':'title'})
     
-    
-        heading=heading[22:32]
+        heading=heading[0:10]
     
 
         News=[]
         for news in heading:
-            News.append(news.text)
+            News.append(news.getText().strip())
+
+        Image=[]
+        for j in soup.find_all('div',{'class':'snaps'}):
+            for k in j.find_all('img'):
+                Image.append(k.get('src'))
+
+        Image=Image[1::2]  
+        Image=Image[0:10]      
 
         s_image="https://wallpaperaccess.com/full/6170275.jpg"
+        
+        url3="https://www.mohfw.gov.in/"
+        r3=requests.get(url3)
+
+        soup2 = BeautifulSoup(r3.content, 'html5lib')
+
+        covid=[]
+
+        for miter in soup2.find_all('span', {'class' : 'mob-show'}):
+            for byiter in miter.find_all('strong'):
+                covid.append(byiter.text)
+        
+        ACases=covid[0]
+        DCases=covid[1]
+        DeCases=covid[2]
 
         if "state-name" in request.GET:
             
@@ -102,7 +124,7 @@ def homePage(request):
                 dict={
                   "chhattisgarh":"https://static.toiimg.com/photo/61783642/.jpg",
                   "madhya-pradesh":"https://wallpapercave.com/wp/wp10785224.jpg",
-                  "rajasthan":"https://wallpapercave.com/dwp1x/wp4021300.jpg",
+                  "rajasthan":"https://www.mapsofindia.com/maps/rajasthan/images/rajasthan.jpg",
                    }
 
                 s_image = dict[state]
@@ -192,4 +214,4 @@ def homePage(request):
             return render(request, 'news/index.html', {'s_image': s_image , 'ACases' : ACases, 'DCases' : DCases, 'DeCases':DeCases, 'state':state, 'Image':Image, 'News': News})
 
 
-        return render(request, 'news/index.html', {'s_image': s_image , 'News': News})
+        return render(request, 'news/index.html', {'s_image': s_image , 'ACases' : ACases, 'DCases' : DCases, 'DeCases':DeCases,'Image':Image, 'News': News})
