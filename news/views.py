@@ -7,6 +7,11 @@ from django.contrib.auth.forms import UserCreationForm
 import lxml
 from bs4 import BeautifulSoup
 import requests
+from selenium import webdriver
+import pandas as pd 
+from selenium.webdriver.common.by import By 
+from selenium.webdriver.support.ui import WebDriverWait 
+from selenium.webdriver.support import expected_conditions as EC
 from .forms import CustomUserCreationForm
 # Create your views here.
 
@@ -52,7 +57,51 @@ def registerUser(request):
     return render(request,'news/login_register.html',context)
 
 
+def videoPage(request):
+    if "state-name" in request.GET:
+            
+        state=request.GET.get('state-name')
+        yt_video={
+                  "chhattisgarh":"https://www.youtube.com/results?search_query=chhattisgarh+news&sp=EgYIARABGAE%253D",
+                  "madhya-pradesh":"https://www.youtube.com/results?search_query=madhya+pradesh+news&sp=EgYIARABGAE%253D",
+                  "rajasthan":"https://www.youtube.com/results?search_query=rajasthan+news&sp=EgYIARABGAE%253D",
+                  "Andhra-Pradesh":"https://www.youtube.com/results?search_query=andhrapradesh+news&sp=EgYIARABGAE%253D",
+                  "Karnataka":"https://www.youtube.com/results?search_query=karnataka+news&sp=EgQIARgB",
+                  "Kerala":"https://www.youtube.com/results?search_query=kerala+news&sp=EgYIARABGAE%253D",
+                  "Tamil-Nadu":"https://www.youtube.com/results?search_query=tamil+nadu+news&sp=EgYIARABGAE%253D",
+                  "Telangana":"https://www.youtube.com/results?search_query=telangana+news&sp=EgYIARABGAE%253D",
+                  "uttar-pradesh":"https://www.youtube.com/results?search_query=uttar+pradesh+news&sp=EgYIARABGAE%253D",
+                  "delhi-ncr":"https://www.youtube.com/results?search_query=delhi+ncr+news&sp=EgYIARABGAE%253D",
+                  "punjab":"https://www.youtube.com/results?search_query=punjab+news&sp=EgYIARABGAE%253D",
+                  "bihar":"https://www.youtube.com/results?search_query=bihar+news&sp=EgYIARABGAE%253D",
+                  "haryana":"https://www.youtube.com/results?search_query=haryana+news&sp=EgYIARABGAE%253D",
+                  "uttarakhand":"https://www.youtube.com/results?search_query=uttarakhand+news&sp=EgYIARABGAE%253D",
+                  "jharkhand":"https://www.youtube.com/results?search_query=jharkhand+news&sp=EgYIARABGAE%253D",
+                  "himachal-pradesh":"https://www.youtube.com/results?search_query=himachal+pradesh+news&sp=EgYIARABGAE%253D",
+                  "jammu-and-kashmir":"https://www.youtube.com/results?search_query=jammu+kashmir+news&sp=EgYIARABGAE%253D",
+                  "west-bengal":"https://www.youtube.com/results?search_query=west+bengal+news&sp=EgYIARABGAE%253D",
+                  "odisha":"https://www.youtube.com/results?search_query=odisha+news&sp=EgYIARABGAE%253D",
+               }
 
+        yt_state = yt_video[state]
+
+        driver = webdriver.Chrome() 
+        driver.get(yt_state)
+
+        user_data = driver.find_elements(By.XPATH,'//*[@id="thumbnail"]')
+        links = []
+        for i in user_data:
+            links.append(i.get_attribute('href'))
+
+        links=links[1:10]
+
+        lin=[]
+        base_url="https://www.youtube.com/embed/"
+        for i in links:
+          lin.append(base_url + (i.partition("=")[2])) 
+
+        return render(request, 'news/videos.html', {'lin':lin})
+    return render(request, 'news/videos.html')    
 
 
 
@@ -127,7 +176,7 @@ def homePage(request):
                   "rajasthan":"https://www.mapsofindia.com/maps/rajasthan/images/rajasthan.jpg",
                    }
 
-                s_image = dict[state]
+                s_image = dict[state] 
 
             elif (state=="Andhra-Pradesh" or state=="Karnataka" or state=="Kerala" or state=="Tamil-Nadu" or state=="Telangana"):
                url2=f"https://www.thenewsminute.com/section/{state}"  
@@ -215,3 +264,5 @@ def homePage(request):
 
 
         return render(request, 'news/index.html', {'s_image': s_image , 'ACases' : ACases, 'DCases' : DCases, 'DeCases':DeCases,'Image':Image, 'News': News})
+
+

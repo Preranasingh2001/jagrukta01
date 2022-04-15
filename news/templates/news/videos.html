@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Video page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+       <h1>Videos</h1>
+       <div style="align-items:center">
+<form class="form-signin"  method="GET" style="padding-left: 196px;" >
+
+<label for="state"></label>
+<select id="state" name="state-name">
+  <option value="none" selected disabled hidden>Select Your Location..</option>
+  <option value="uttar-pradesh">Uttar Pradesh</option>
+  <option value="delhi-ncr">Delhi NCR</option>
+  <option value="punjab">Punjab</option>
+  <option value="bihar">Bihar</option>
+  <option value="haryana">Haryana</option>
+  <option value="uttarakhand">Uttarakhand</option>
+  <option value="chhattisgarh">Chhattisgarh</option>
+  <option value="jharkhand">Jharkhand</option>
+  <option value="Andhra-Pradesh">Andhra Pradesh</option>
+  <option value="madhya-pradesh">Madhya Pradesh</option>
+  <option value="himachal-pradesh">Himachal Pradesh</option>
+  <option value="jammu-and-kashmir">Jammu Kashmir</option>
+  <option value="west-bengal">West Bengal</option>
+  <option value="odisha">Odisha</option>
+  <option value="rajasthan">Rajasthan</option>
+  <option value="Karnataka">Karnataka</option>
+  <option value="Kerala">Kerala</option>
+  <option value="Tamil-Nadu">Tamil Nadu</option>
+  <option value="Telangana">Telangana</option>
+</select>
+
+      <!-- <p><input type="text" id="states" name="state-name" class="form-control-text-center" placeholder="Enter State Name" required></p>-->
+       <br>
+
+       <p><button class="btn-btn-outline-secondary" style="margin-left:180px" type="submit" >SEARCH</button></p>
+</div>
+       <div> 
+          <ul>
+            {% for l in lin %}
+              <li style="list-style-type:none;text-decoration:none">
+              <iframe height="480" width="700" src="{{l}}" allowfullscreen></iframe>
+              </li>
+              <hr>
+              {% endfor %}
+              <br>
+              <br>
+          </ul>
+        </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
