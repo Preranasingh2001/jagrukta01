@@ -16,6 +16,8 @@ from .forms import CustomUserCreationForm
 # Create your views here.
 
 
+def chatbotPage(request):
+    return render(request, 'bot.html')
 
 def paymentPage(request):
     return render(request, 'pay.html')
