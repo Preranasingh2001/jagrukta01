@@ -12,7 +12,8 @@ from .forms import CustomUserCreationForm
 
 
 
-
+def paymentPage(request):
+    return render(request, 'pay.html')
 
 def loginPage(request):
     page ='login'
