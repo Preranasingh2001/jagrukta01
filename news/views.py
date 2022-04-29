@@ -61,31 +61,72 @@ def registerUser(request):
 
 
 def videoPage(request):
+
+    yt_state="https://www.youtube.com/results?search_query=india+news&sp=EgYIARABGAE%253D"
+    driver = webdriver.Chrome() 
+    driver.get(yt_state)
+
+    user_data = driver.find_elements(By.XPATH,'//*[@id="thumbnail"]')
+    links = []
+    for i in user_data:
+        links.append(i.get_attribute('href'))
+
+    links=links[1:11]
+
+    lin=[]
+    base_url="https://www.youtube.com/embed/"
+    for i in links:
+        lin.append(base_url + (i.partition("=")[2])) 
+
+    s_image="https://wallpaperaccess.com/full/6170275.jpg"    
+    
     if "state-name" in request.GET:
             
         state=request.GET.get('state-name')
+        dict={
+                        "Chhattisgarh":"https://static.toiimg.com/photo/61783642/.jpg",
+                        "Madhya-Pradesh":"https://wallpapercave.com/wp/wp10785224.jpg",
+                        "Rajasthan":"https://www.mapsofindia.com/maps/rajasthan/images/rajasthan.jpg",
+                        "Uttar-Pradesh":"https://wallpapercave.com/dwp1x/wp6612900.jpg",
+                        "Delhi-NCR":"https://wallpapercave.com/wp/wp1891549.jpg",
+                        "Punjab":"https://wallpaperaccess.com/full/1828844.jpg",
+                        "Bihar":"https://imgnew.outlookindia.com/public/uploads/articles/2021/1/28/BODHGAYA4-1024x686.jpg",
+                        "Haryana":"https://www.nativeplanet.com/img/2018/03/1-1520417762.jpg",
+                        "Uttarakhand":"https://wallpapercave.com/wp/wp7372495.jpg",
+                        "Jharkhand":"https://tourism.jharkhand.gov.in/Application/uploadDocuments/location/1140X320/location20200929_133548.jpg",
+                        "Himachal-pradesh":"https://wallpapercave.com/wp/wp5165428.jpg",
+                        "Jammu-and-kashmir":"https://wallpapercave.com/wp/wp2678168.jpg",
+                        "West-Bengal":"https://static.toiimg.com/photo/67786078.cms",
+                        "Andhra-Pradesh":"https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2016/06/24498998325_f451c67aae_o.jpg",
+                        "Karnataka":"https://wallpapercave.com/wp/wp8568701.jpg",
+                        "Kerala":"https://wallpapercave.com/dwp1x/wp7877523.jpg",
+                        "Tamil-Nadu":"https://wallpapercave.com/wp/wp7626693.jpg",
+                        "Telangana":"https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2016/06/24498998325_f451c67aae_o.jpg",
+                        "Odisha":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/The_sun_temple_at_konark.jpg/1024px-The_sun_temple_at_konark.jpg",
+             }
+        s_image=dict[state]     
         yt_video={
-                  "chhattisgarh":"https://www.youtube.com/results?search_query=chhattisgarh+news&sp=EgYIARABGAE%253D",
-                  "madhya-pradesh":"https://www.youtube.com/results?search_query=madhya+pradesh+news&sp=EgYIARABGAE%253D",
-                  "rajasthan":"https://www.youtube.com/results?search_query=rajasthan+news&sp=EgYIARABGAE%253D",
+                  "Chhattisgarh":"https://www.youtube.com/results?search_query=chhattisgarh+news&sp=EgYIARABGAE%253D",
+                  "Madhya-Pradesh":"https://www.youtube.com/results?search_query=madhya+pradesh+news&sp=EgYIARABGAE%253D",
+                  "Rajasthan":"https://www.youtube.com/results?search_query=rajasthan+news&sp=EgYIARABGAE%253D",
                   "Andhra-Pradesh":"https://www.youtube.com/results?search_query=andhrapradesh+news&sp=EgYIARABGAE%253D",
                   "Karnataka":"https://www.youtube.com/results?search_query=karnataka+news&sp=EgQIARgB",
                   "Kerala":"https://www.youtube.com/results?search_query=kerala+news&sp=EgYIARABGAE%253D",
                   "Tamil-Nadu":"https://www.youtube.com/results?search_query=tamil+nadu+news&sp=EgYIARABGAE%253D",
                   "Telangana":"https://www.youtube.com/results?search_query=telangana+news&sp=EgYIARABGAE%253D",
-                  "uttar-pradesh":"https://www.youtube.com/results?search_query=uttar+pradesh+news&sp=EgYIARABGAE%253D",
-                  "delhi-ncr":"https://www.youtube.com/results?search_query=delhi+ncr+news&sp=EgYIARABGAE%253D",
-                  "punjab":"https://www.youtube.com/results?search_query=punjab+news&sp=EgYIARABGAE%253D",
-                  "bihar":"https://www.youtube.com/results?search_query=bihar+news&sp=EgYIARABGAE%253D",
-                  "haryana":"https://www.youtube.com/results?search_query=haryana+news&sp=EgYIARABGAE%253D",
-                  "uttarakhand":"https://www.youtube.com/results?search_query=uttarakhand+news&sp=EgYIARABGAE%253D",
-                  "jharkhand":"https://www.youtube.com/results?search_query=jharkhand+news&sp=EgYIARABGAE%253D",
-                  "himachal-pradesh":"https://www.youtube.com/results?search_query=himachal+pradesh+news&sp=EgYIARABGAE%253D",
-                  "jammu-and-kashmir":"https://www.youtube.com/results?search_query=jammu+kashmir+news&sp=EgYIARABGAE%253D",
-                  "west-bengal":"https://www.youtube.com/results?search_query=west+bengal+news&sp=EgYIARABGAE%253D",
-                  "odisha":"https://www.youtube.com/results?search_query=odisha+news&sp=EgYIARABGAE%253D",
+                  "Uttar-Pradesh":"https://www.youtube.com/results?search_query=uttar+pradesh+news&sp=EgYIARABGAE%253D",
+                  "Delhi-NCR":"https://www.youtube.com/results?search_query=delhi+ncr+news&sp=EgYIARABGAE%253D",
+                  "Punjab":"https://www.youtube.com/results?search_query=punjab+news&sp=EgYIARABGAE%253D",
+                  "Bihar":"https://www.youtube.com/results?search_query=bihar+news&sp=EgYIARABGAE%253D",
+                  "Haryana":"https://www.youtube.com/results?search_query=haryana+news&sp=EgYIARABGAE%253D",
+                  "Uttarakhand":"https://www.youtube.com/results?search_query=uttarakhand+news&sp=EgYIARABGAE%253D",
+                  "Jharkhand":"https://www.youtube.com/results?search_query=jharkhand+news&sp=EgYIARABGAE%253D",
+                  "Himachal-Pradesh":"https://www.youtube.com/results?search_query=himachal+pradesh+news&sp=EgYIARABGAE%253D",
+                  "Jammu-and-Kashmir":"https://www.youtube.com/results?search_query=jammu+kashmir+news&sp=EgYIARABGAE%253D",
+                  "West-Bengal":"https://www.youtube.com/results?search_query=west+bengal+news&sp=EgYIARABGAE%253D",
+                  "Odisha":"https://www.youtube.com/results?search_query=odisha+news&sp=EgYIARABGAE%253D",
                }
-
+               
         yt_state = yt_video[state]
 
         driver = webdriver.Chrome() 
@@ -96,16 +137,15 @@ def videoPage(request):
         for i in user_data:
             links.append(i.get_attribute('href'))
 
-        links=links[1:10]
+        links=links[1:11]
 
         lin=[]
         base_url="https://www.youtube.com/embed/"
         for i in links:
           lin.append(base_url + (i.partition("=")[2])) 
 
-        return render(request, 'news/videos.html', {'lin':lin})
-    return render(request, 'news/videos.html')    
-
+        return render(request, 'news/videos.html', {'lin':lin,'state':state,'s_image':s_image})
+    return render(request, 'news/videos.html', {'lin':lin, 's_image':s_image})    
 
 
 

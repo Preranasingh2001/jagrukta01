@@ -15,13 +15,19 @@
        
 
         <style>
+        @import url('https://fonts.googleapis.com/css2?family=Eczar&display=swap');
+        html{
+          height:100%;
+        }
         body{
+          height:100%;
           margin:0;
           background-color:#7ee9e759;
           overflow-x:hidden;
-          padding:10px;
         }
-
+        div.front{
+          display:grid;
+        } 
           select{
              width: 35vw;
              padding: 1vw;
@@ -53,25 +59,50 @@
            background-attachment:fixed;
            background-position:10% 30%
          }
-
-         
+        div#co{
+          height:90vh;
+          background-image:url("https://img.huffingtonpost.com/asset/5eb969892200003c13828809.jpeg?ops=crop_0_2000_5000_3000%2Cscalefit_720_noupscale&format=webp");
+          background-size:200px;
+          background-repeat:repeat;
+          background-attachment:fixed;
+        }
+         div#bet{
+           background-size:stretch;
+           background-image:url("http://ddugky.gov.in/sites/default/files/photo_gallery/Slide8.jpg");
+           background-attachment:fixed;
+           background-size:contain;
+           background-position:center;
+           height:70vh;
+         }
+         div#vid{
+           display:grid;
+           grid-template-columns:80% auto;
+           grid-column-gap:0px;
+           background-image:url("https://c.tenor.com/Z86FNGx3isEAAAAd/news-animated.gif");
+           background-size:cover;
+           height:70vh;
+           background-position:center;
+         }
+         a:hover { text-decoration: none; color:red; }
+         a:focus { text-decoration: none; color:red; }
+         a:active { text-decoration: none; color:red; }
+         a:visited{ text-decoration: none; color:red; }
     </style>
 
     </head>
     <body>
-     
+    
     <div class="background">
      
     <div class="nav" id="on-top" style="display:grid;grid-template-columns:18% 70% auto;padding-top:20px;column-gap:3px;">
     <h2>
          {% if request.user.is_authenticated %}
-                <p id="top" style = "background-color:yellow;">Hello {{request.user}}!</p>
+                <p id="top" style="font-size:40px;background-color:white;"><img src="https://c.tenor.com/nebZyl8oN7IAAAAi/wave-hello.gif" height=45 width=45></img> {{request.user}}!</p>
          {% endif %}
     </h2>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
 <div style="align-items:center">
 <form class="form-signin"  method="GET" style="padding-left: 196px;" >
 
@@ -114,14 +145,16 @@
        <hr>
        <br>
        <center>
-       <h1 style="background-color:#09e2ff80;text-transform:uppercase;text-decoration:underline;">{{state}}</h1>
+       <h1 style="background-color:#09e2ff80;text-transform:uppercase;text-decoration:underline;font-size:40px;">{{state}}</h1>
        </center>
        <br>
        <hr>
        <br>
        </div>
+       
+      
         <div class="jumbotron">
-        <center><h1 style="background-color:#ff820cad">NEWSROOM</h1></center> 
+        <center><h1 style="background-color:#ff820cad">NEWSROOM</h1></center>
            <h2><a href="" class="btn btn-danger">Refresh News</a></h2>
        
         </div>
@@ -141,10 +174,9 @@
                  </div>
                 <div style="align-content:center">
                     {% for news in News %}
-                    <h3 style="height:223.5px"> =>&nbsp {{news}} </h3>
-                    <hr>
-                    {% endfor %}
+                    <h3 style="height:215px;font-family:'Eczar',serif;font-size:20px"> =>&nbsp {{news}} </h3>
                     <br>
+                    {% endfor %}
                     <br>
                  </div>     
             </div>        
@@ -155,18 +187,22 @@
 <br>
 <br>
 <hr>
-<h1>Coronavirus Updates</h1>
+<div id="bet">
+</div>
+<div id ="co">
+<h1 style="padding:0px;margin:0px">Coronavirus Updates</h1>
        <pre>
        <h2>ACTIVE CASES = {{ACases}}</h2>
        <h2>DISCHARGED CASES = {{DCases}}</h2>
        <h2>DEATH CASES = {{DeCases}}</h2>
        </pre>
        <h4><i><a href= "https://www.mohfw.gov.in/">from Ministry of Health and Family Welfare</a></i></h4>
-        <br>
-       <br>
-       <hr>
-       <h1>Weather Updates</h1>
-        <h1><a href="videos">Video</a></h1>
+       </div>
+       <div id="vid">
+       <h1 style="padding:150px;margin:0px;font-size:80px;font-color:red;"><a href="videos" style="text-decoration:none;">Latest &nbsp News &nbsp Videos</a></h1>
+       <iframe src="https://giphy.com/embed/pranK8bvzUyzLyT1rG" width="240" height="230" style="padding:70px;" frameBorder="0" ></iframe>
+       </div>
+       </div>
         <script src="" async defer></script>
       <!--  <script
 src="http://code.jquery.com/jquery-3.3.1.min.js"

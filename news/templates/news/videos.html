@@ -12,29 +12,65 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
+    <style>
+    body{
+      background-image:url({{s_image}});
+      background-size:cover;
+      background-attachment:fixed;
+    }
+    div.main{
+      display:grid;
+      grid-template-columns:40% 40% auto;
+    }
+    select{
+             width: 35vw;
+             padding: 1vw;
+             text-align-last:center;
+             border:3px solid black;
+             background-color:#a9bd2bb0;
+         }
+    button {
+             margin-left:8px;
+             width: 10vw;
+             padding: 1vw;
+             border-radius:50px;
+             box-shadow: #ADCFFF 0 -12px 6px inset;
+         }
+     button:hover{
+           padding:1.1vw;
+           cursor:pointer;
+           background-color: ##E8CACA;
+           box-shadow: #FF6314 0 -6px 8px inset;
+             }
+     div.vide{
+             float: left;
+             width: 50%;
+             padding-bottom:12px;
+    }
+    </style>
     <body>
-       <h1>Videos</h1>
-       <div style="align-items:center">
-<form class="form-signin"  method="GET" style="padding-left: 196px;" >
+    <div class="main">
+<div style="align-items:center">
+<form class="form-signin"  method="GET" style="padding-left: 20px;" >
 
 <label for="state"></label>
 <select id="state" name="state-name">
   <option value="none" selected disabled hidden>Select Your Location..</option>
-  <option value="uttar-pradesh">Uttar Pradesh</option>
-  <option value="delhi-ncr">Delhi NCR</option>
-  <option value="punjab">Punjab</option>
-  <option value="bihar">Bihar</option>
-  <option value="haryana">Haryana</option>
-  <option value="uttarakhand">Uttarakhand</option>
-  <option value="chhattisgarh">Chhattisgarh</option>
-  <option value="jharkhand">Jharkhand</option>
+  <option value="Uttar-Pradesh">Uttar Pradesh</option>
+  <option value="Delhi-NCR">Delhi NCR</option>
+  <option value="Punjab">Punjab</option>
+  <option value="Bihar">Bihar</option>
+  <option value="Haryana">Haryana</option>
+  <option value="Uttarakhand">Uttarakhand</option>
+  <option value="Chhattisgarh">Chhattisgarh</option>
+  <option value="Jharkhand">Jharkhand</option>
   <option value="Andhra-Pradesh">Andhra Pradesh</option>
-  <option value="madhya-pradesh">Madhya Pradesh</option>
-  <option value="himachal-pradesh">Himachal Pradesh</option>
-  <option value="jammu-and-kashmir">Jammu Kashmir</option>
-  <option value="west-bengal">West Bengal</option>
-  <option value="odisha">Odisha</option>
-  <option value="rajasthan">Rajasthan</option>
+  <option value="Madhya-Pradesh">Madhya Pradesh</option>
+  <option value="Himachal-Pradesh">Himachal Pradesh</option>
+  <option value="Jammu-and-Kashmir">Jammu Kashmir</option>
+  <option value="West-Bengal">West Bengal</option>
+  <option value="Odisha">Odisha</option>
+  <option value="Rajasthan">Rajasthan</option>
   <option value="Karnataka">Karnataka</option>
   <option value="Kerala">Kerala</option>
   <option value="Tamil-Nadu">Tamil Nadu</option>
@@ -46,16 +82,21 @@
 
        <p><button class="btn-btn-outline-secondary" style="margin-left:180px" type="submit" >SEARCH</button></p>
 </div>
+<div>
+<h1>{{state}}</h1>
+</div>
+<div>
+<button  onclick="location.href='http://127.0.0.1:8000/'" type="button" style="size:20px; margin-top:5px; height:53px;"> LOGOUT </button> 
+</div>
+</div>
        <div> 
           <ul>
             {% for l in lin %}
-              <li style="list-style-type:none;text-decoration:none">
-              <iframe height="480" width="700" src="{{l}}" allowfullscreen></iframe>
-              </li>
-              <hr>
-              {% endfor %}
-              <br>
-              <br>
+              <div class="vide">
+              <iframe height="300" width="500" src="{{l}}" allowfullscreen></iframe>
+              </div>
+            {% endfor %}
+              
           </ul>
         </div>
         
