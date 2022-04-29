@@ -195,7 +195,8 @@ def homePage(request):
         if "state-name" in request.GET:
             
             state=request.GET.get('state-name')
-            city= request.GET.get('state-name')
+            var = request.GET.get('state-name')
+            city= request.GET.get('state-name').replace('-',' ')
             url=f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid=8257c3245fe46476bbb73f8920f1418e"
             x= requests.get(url)
             y=x.json()
