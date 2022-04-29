@@ -16,6 +16,9 @@
 
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Eczar&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Exo:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
         html{
           height:100%;
         }
@@ -59,20 +62,28 @@
            background-attachment:fixed;
            background-position:10% 30%
          }
+         div#weath{
+           display:grid;
+           grid-template-columns:16% 17% 16% 17% 21% auto;
+           height:10vh;
+           background-image:url("https://media2.giphy.com/media/7fXJxh7tflF30rReSS/giphy.gif?cid=ecf05e47poc8x0bkhin0pxjliyiywwm4jdmhjxoo96i1oxoh&rid=giphy.gif&ct=g");
+           background-size:cover;
+         }
         div#co{
-          height:90vh;
-          background-image:url("https://img.huffingtonpost.com/asset/5eb969892200003c13828809.jpeg?ops=crop_0_2000_5000_3000%2Cscalefit_720_noupscale&format=webp");
-          background-size:200px;
-          background-repeat:repeat;
-          background-attachment:fixed;
+          height:95vh;
+          background-image:url("https://img.freepik.com/free-photo/medical-gloves-disinfectant-thermometer-hand-sanitizer-surgical-mask-blue-background_123827-17885.jpg?w=740");
+          background-size:cover;
+          background-repeat:no-repeat;
+          background-position:center;
+          
         }
          div#bet{
            background-size:stretch;
-           background-image:url("http://ddugky.gov.in/sites/default/files/photo_gallery/Slide8.jpg");
+           background-image:url("https://static.vecteezy.com/system/resources/previews/002/223/158/original/doodle-set-of-illustration-of-covid-19-elements-corona-virus-modern-illustration-for-print-and-web-vector.jpg");
            background-attachment:fixed;
-           background-size:contain;
-           background-position:center;
-           height:70vh;
+           background-size:300px;
+           background-repeat:repeat;
+           height:45vh;
          }
          div#vid{
            display:grid;
@@ -80,8 +91,15 @@
            grid-column-gap:0px;
            background-image:url("https://c.tenor.com/Z86FNGx3isEAAAAd/news-animated.gif");
            background-size:cover;
-           height:70vh;
+           height:60vh;
            background-position:center;
+         }
+         div#end{
+           background-image:url("https://cdn.dribbble.com/users/2879528/screenshots/6326576/doodle_icons_4x.jpg?compress=1&resize=400x300&vertical=top");
+           background-attachment:fixed;
+           background-size:150px;
+           background-repeat:repeat;
+           height:45vh;
          }
          a:hover { text-decoration: none; color:red; }
          a:focus { text-decoration: none; color:red; }
@@ -150,6 +168,17 @@
        <br>
        <hr>
        <br>
+       <br>
+       <br>
+       <br>
+       <div id="weath">
+       <h1 class="text-dark" style="text-transform:uppercase;font-family: 'Ubuntu Mono', monospace;">&nbsp&nbsp&nbsp&nbsp&nbsp {{ Temp }}</h1>
+       <h2 class="text-dark" style="text-transform:uppercase;font-family: 'Ubuntu Mono', monospace;">&nbsp&nbsp&nbsp&nbsp&nbsp {{ City }}</h2>
+       <h2 class="text-dark" style="text-transform:uppercase;font-family: 'Ubuntu Mono', monospace;">&nbsp&nbsp&nbsp&nbsp&nbsp {{ weather_condition }}</h2>
+       <h2 class="text-dark" style="text-transform:uppercase;font-family: 'Ubuntu Mono', monospace;">&nbsp&nbsp&nbsp&nbsp&nbsp {{ Humidity }}</h2>
+       <h2 class="text-dark" style="text-transform:uppercase;font-family: 'Ubuntu Mono', monospace;">&nbsp&nbsp&nbsp&nbsp&nbsp {{ Pressure }}</h2>
+       <h2> &nbsp&nbsp {{main}} <img id="forecast" src="http://openweathermap.org/img/w/{{icon}}.png" onerror="this.src='https://i.giphy.com/media/WsfbFDO4IpBm3we9Ho/giphy.webp'" style="width : 140px;margin-top:-50px" alt=""></h2>
+       </div>
        </div>
        
       
@@ -177,7 +206,7 @@
                     <h3 style="height:215px;font-family:'Eczar',serif;font-size:20px"> =>&nbsp {{news}} </h3>
                     <br>
                     {% endfor %}
-                    <br>
+                  <br>
                  </div>     
             </div>        
 
@@ -186,23 +215,26 @@
 <center><h3><a href="#on-top">Back to Top</a></h3></center>
 <br>
 <br>
-<hr>
 <div id="bet">
 </div>
 <div id ="co">
-<h1 style="padding:0px;margin:0px">Coronavirus Updates</h1>
-       <pre>
-       <h2>ACTIVE CASES = {{ACases}}</h2>
-       <h2>DISCHARGED CASES = {{DCases}}</h2>
-       <h2>DEATH CASES = {{DeCases}}</h2>
+<center><h1 style="padding: 39px;margin:0px;font-size:60px;text-transform:uppercase;font-family: 'Francois One', sans-serif;">Coronavirus &nbsp Updates</h1></center>
+       <pre style="display:grid;grid-template-columns:33% 38% auto;padding-left:0px;padding-top:55px;">
+       <h2 style="font-size:24px;background-color: #ffffff99;height: 62px;font-family: 'Exo', sans-serif;">&nbsp&nbsp&nbsp ACTIVE CASES =&nbsp {{ACases}}</h2>
+       <h2 style="font-size:24px;background-color: #16ff4e66;height: 62px;font-family: 'Exo', sans-serif;">&nbsp&nbsp&nbsp DISCHARGED CASES =&nbsp {{DCases}}</h2>
+       <h2 style="font-size:24px;background-color: #ff2020a3;height: 62px;font-family: 'Exo', sans-serif;">&nbsp&nbsp&nbsp DEATH CASES =&nbsp {{DeCases}}</h2>
        </pre>
-       <h4><i><a href= "https://www.mohfw.gov.in/">from Ministry of Health and Family Welfare</a></i></h4>
+       <br>
+       <br>
+       <center><h3><i><a href= "https://www.mohfw.gov.in/">from Ministry of Health and Family Welfare</a></i></h3></center>
        </div>
-       <div id="vid">
-       <h1 style="padding:150px;margin:0px;font-size:80px;font-color:red;"><a href="videos" style="text-decoration:none;">Latest &nbsp News &nbsp Videos</a></h1>
-       <iframe src="https://giphy.com/embed/pranK8bvzUyzLyT1rG" width="240" height="230" style="padding:70px;" frameBorder="0" ></iframe>
-       </div>
-       </div>
+<div id="end">
+</div>
+<div id="vid">
+  <h1 style="padding:150px;margin:0px;font-size:80px;font-color:red;"><a href="videos" style="text-decoration:none;">Latest &nbsp News &nbsp Videos</a></h1>
+  <iframe src="https://giphy.com/embed/pranK8bvzUyzLyT1rG" width= 270 height = 240px style="padding:25px;" frameBorder="0" ></iframe>
+</div>
+</div>
         <script src="" async defer></script>
       <!--  <script
 src="http://code.jquery.com/jquery-3.3.1.min.js"

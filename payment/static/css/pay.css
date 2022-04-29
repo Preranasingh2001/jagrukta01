@@ -1,33 +1,32 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- }
- 
- body{
-     display: grid;
-     justify-content: center;
-     align-items: center;
-     min-height: 100vh;
-     /* background-image: url(https://cdn.pixabay.com/photo/2021/03/22/14/11/technology-6114752_960_720.jpg); */
-     background-image: url(https://github.com/smanivesh/image/blob/main/donation.png?raw=true);
-     background-repeat: no-repeat;
-     background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-     background-position-y:top;
-     /* background: rgba(226, 89, 219, 0.26); */
-     color: rgb(0, 0, 0);
- }
-
- .container{
+body {
     display: grid;
     justify-content: center;
-    width: 306px;
-    height: 261px;
+    align-items: center;
+    min-height: 100vh;
+    /* background-image: url(https://cdn.pixabay.com/photo/2021/03/22/14/11/technology-6114752_960_720.jpg); */
+    background-image: url(https://github.com/smanivesh/image/blob/main/donation.png?raw=true);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: top;
+    /* background: rgba(226, 89, 219, 0.26); */
+    color: rgb(0, 0, 0);
+}
+
+.container {
+    display: grid;
+    justify-content: center;
+    width: 426px;
+    height: 230px;
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-left: 1px solid #ffffff80;
     border-radius: 10px;
-    background: rgba(245, 187, 120, 0.377);
+    background: rgba(235, 220, 204, 0.38);
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-left: 1px solid #ffffff80;
     border-radius: 10px;

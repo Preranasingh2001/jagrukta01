@@ -1,6 +1,10 @@
 from unicodedata import name
 from urllib import request
 from django.shortcuts import render, redirect
+from django.shortcuts import render, HttpResponse
+import json
+import requests
+import math
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -126,7 +130,7 @@ def videoPage(request):
                   "West-Bengal":"https://www.youtube.com/results?search_query=west+bengal+news&sp=EgYIARABGAE%253D",
                   "Odisha":"https://www.youtube.com/results?search_query=odisha+news&sp=EgYIARABGAE%253D",
                }
-               
+
         yt_state = yt_video[state]
 
         driver = webdriver.Chrome() 
@@ -191,7 +195,16 @@ def homePage(request):
         if "state-name" in request.GET:
             
             state=request.GET.get('state-name')
-            
+            city= request.GET.get('state-name')
+            url=f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid=8257c3245fe46476bbb73f8920f1418e"
+            x= requests.get(url)
+            y=x.json()
+            City = f"{y['name']}"
+            Temp = f"{math.trunc(y['main']['temp']-273.15)}°C"
+            icon =  f"{y['weather'][0]['icon']}"
+            Pressure = f"Pressure: {y['main']['pressure']} mb"
+            Humidity = f"Humidity: {y['main']['humidity']}%"
+            weather_condition = f"{y['weather'][0]['description']}".capitalize()
 
             if (state=="chhattisgarh" or state=="madhya-pradesh" or state=="rajasthan"):
                 url=f"https://www.amarujala.com/{state}"
@@ -303,7 +316,7 @@ def homePage(request):
             DeCases=covid[2]
 
        
-            return render(request, 'news/index.html', {'s_image': s_image , 'ACases' : ACases, 'DCases' : DCases, 'DeCases':DeCases, 'state':state, 'Image':Image, 'News': News})
+            return render(request, 'news/index.html', {'City': City,'Temp':Temp,'icon':icon,'Pressure':Pressure,'Humidity':Humidity,'weather_condition':weather_condition, 's_image': s_image , 'ACases' : ACases, 'DCases' : DCases, 'DeCases':DeCases, 'state':state, 'Image':Image, 'News': News})
 
 
         return render(request, 'news/index.html', {'s_image': s_image , 'ACases' : ACases, 'DCases' : DCases, 'DeCases':DeCases,'Image':Image, 'News': News})
