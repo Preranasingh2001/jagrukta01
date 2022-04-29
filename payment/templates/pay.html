@@ -2,14 +2,18 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link href="{% static 'css/pay.css' %}" rel="stylesheet">
   </head>
   <body>
-    <h1> Donate here<h1>
+    <div class="container"> 
+    <h1> Donate Here<h1>
     <!-- Replace "test" with your own sandbox Business account app client ID -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AWA1Og3I-NZuCro23xl6-mxMRUI6Ldhk9mAyKoiCQYkStJ1yyk12oq3344E1M1A_mFf44BPv9e1Y4abh&currency=USD"></script>
+    {% comment %} <script src="https://www.paypal.com/sdk/js?client-id=AWA1Og3I-NZuCro23xl6-mxMRUI6Ldhk9mAyKoiCQYkStJ1yyk12oq3344E1M1A_mFf44BPv9e1Y4abh&currency=USD"></script> {% endcomment %}
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
     <!-- Set up a container element for the button -->
     <div id="paypal-button-container"></div>
-    <script>
+    {% comment %} <script>
       paypal.Buttons({
         // Sets up the transaction when a payment button is clicked
         createOrder: (data, actions) => {
@@ -35,6 +39,18 @@
           });
         }
       }).render('#paypal-button-container');
-    </script>
+    </script> {% endcomment %}
+
+    <script>
+      // Render the PayPal button into #paypal-button-container
+      paypal.Buttons({
+          style: {
+              layout: 'horizontal',
+              width: 80,
+              height:40
+          }
+      }).render('#paypal-button-container');
+  </script>
+  </div>
   </body>
 </html>
