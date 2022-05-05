@@ -64,26 +64,8 @@ def registerUser(request):
     return render(request,'news/login_register.html',context)
 
 
-def videoPage(request):
+def videoPage(request):   
 
-    yt_state="https://www.youtube.com/results?search_query=india+news&sp=EgYIARABGAE%253D"
-    driver = webdriver.Chrome() 
-    driver.get(yt_state)
-
-    user_data = driver.find_elements(By.XPATH,'//*[@id="thumbnail"]')
-    links = []
-    for i in user_data:
-        links.append(i.get_attribute('href'))
-
-    links=links[1:11]
-
-    lin=[]
-    base_url="https://www.youtube.com/embed/"
-    for i in links:
-        lin.append(base_url + (i.partition("=")[2])) 
-
-    s_image="https://wallpaperaccess.com/full/6170275.jpg"    
-    
     if "state-name" in request.GET:
             
         state=request.GET.get('state-name')
@@ -98,8 +80,8 @@ def videoPage(request):
                         "Haryana":"https://www.nativeplanet.com/img/2018/03/1-1520417762.jpg",
                         "Uttarakhand":"https://wallpapercave.com/wp/wp7372495.jpg",
                         "Jharkhand":"https://tourism.jharkhand.gov.in/Application/uploadDocuments/location/1140X320/location20200929_133548.jpg",
-                        "Himachal-pradesh":"https://wallpapercave.com/wp/wp5165428.jpg",
-                        "Jammu-and-kashmir":"https://wallpapercave.com/wp/wp2678168.jpg",
+                        "Himachal-Pradesh":"https://wallpapercave.com/wp/wp5165428.jpg",
+                        "Jammu-and-Kashmir":"https://wallpapercave.com/wp/wp2678168.jpg",
                         "West-Bengal":"https://static.toiimg.com/photo/67786078.cms",
                         "Andhra-Pradesh":"https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2016/06/24498998325_f451c67aae_o.jpg",
                         "Karnataka":"https://wallpapercave.com/wp/wp8568701.jpg",
@@ -112,21 +94,21 @@ def videoPage(request):
         yt_video={
                   "Chhattisgarh":"https://www.youtube.com/results?search_query=chhattisgarh+news&sp=EgYIARABGAE%253D",
                   "Madhya-Pradesh":"https://www.youtube.com/results?search_query=madhya+pradesh+news&sp=EgYIARABGAE%253D",
-                  "Rajasthan":"https://www.youtube.com/results?search_query=rajasthan+news&sp=EgYIARABGAE%253D",
+                  "Rajasthan":"https://www.youtube.com/results?search_query=rajasthan+news&sp=EgYIAhABGAE%253D",
                   "Andhra-Pradesh":"https://www.youtube.com/results?search_query=andhrapradesh+news&sp=EgYIARABGAE%253D",
                   "Karnataka":"https://www.youtube.com/results?search_query=karnataka+news&sp=EgQIARgB",
                   "Kerala":"https://www.youtube.com/results?search_query=kerala+news&sp=EgYIARABGAE%253D",
                   "Tamil-Nadu":"https://www.youtube.com/results?search_query=tamil+nadu+news&sp=EgYIARABGAE%253D",
                   "Telangana":"https://www.youtube.com/results?search_query=telangana+news&sp=EgYIARABGAE%253D",
-                  "Uttar-Pradesh":"https://www.youtube.com/results?search_query=uttar+pradesh+news&sp=EgYIARABGAE%253D",
-                  "Delhi-NCR":"https://www.youtube.com/results?search_query=delhi+ncr+news&sp=EgYIARABGAE%253D",
-                  "Punjab":"https://www.youtube.com/results?search_query=punjab+news&sp=EgYIARABGAE%253D",
+                  "Uttar-Pradesh":"https://www.youtube.com/results?search_query=uttar+pradesh+news&sp=EgYIAhABGAE%253D",
+                  "Delhi-NCR":"https://www.youtube.com/results?search_query=delhi+ncr+news&sp=EgYIAhABGAE%253D",
+                  "Punjab":"https://www.youtube.com/results?search_query=punjab+news&sp=CAASBggCEAEYAQ%253D%253D",
                   "Bihar":"https://www.youtube.com/results?search_query=bihar+news&sp=EgYIARABGAE%253D",
                   "Haryana":"https://www.youtube.com/results?search_query=haryana+news&sp=EgYIARABGAE%253D",
                   "Uttarakhand":"https://www.youtube.com/results?search_query=uttarakhand+news&sp=EgYIARABGAE%253D",
                   "Jharkhand":"https://www.youtube.com/results?search_query=jharkhand+news&sp=EgYIARABGAE%253D",
                   "Himachal-Pradesh":"https://www.youtube.com/results?search_query=himachal+pradesh+news&sp=EgYIARABGAE%253D",
-                  "Jammu-and-Kashmir":"https://www.youtube.com/results?search_query=jammu+kashmir+news&sp=EgYIARABGAE%253D",
+                  "Jammu-and-Kashmir":"https://www.youtube.com/results?search_query=jammu+kashmir+news&sp=EgYIAhABGAE%253D",
                   "West-Bengal":"https://www.youtube.com/results?search_query=west+bengal+news&sp=EgYIARABGAE%253D",
                   "Odisha":"https://www.youtube.com/results?search_query=odisha+news&sp=EgYIARABGAE%253D",
                }
@@ -149,6 +131,25 @@ def videoPage(request):
           lin.append(base_url + (i.partition("=")[2])) 
 
         return render(request, 'news/videos.html', {'lin':lin,'state':state,'s_image':s_image})
+
+    yt_state="https://www.youtube.com/results?search_query=india+news&sp=EgYIAhABGAE%253D"
+    driver = webdriver.Chrome() 
+    driver.get(yt_state)
+
+    user_data = driver.find_elements(By.XPATH,'//*[@id="thumbnail"]')
+    links = []
+    for i in user_data:
+        links.append(i.get_attribute('href'))
+
+    links=links[1:11]
+
+    lin=[]
+    base_url="https://www.youtube.com/embed/"
+    for i in links:
+        lin.append(base_url + (i.partition("=")[2])) 
+  
+    s_image="https://wallpaperaccess.com/full/6170275.jpg" 
+
     return render(request, 'news/videos.html', {'lin':lin, 's_image':s_image})    
 
 
